@@ -1,0 +1,76 @@
+Name:             data-exchange-66fb658d75-99s6g
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             debian/192.168.1.118
+Start Time:       Tue, 03 Nov 2026 06:35:02 +0300
+Labels:           app=data-exchange
+                  pod-template-hash=66fb658d75
+Annotations:      <none>
+Status:           Running
+IP:               10.42.0.64
+IPs:
+  IP:           10.42.0.64
+Controlled By:  ReplicaSet/data-exchange-66fb658d75
+Containers:
+  busybox-writer:
+    Container ID:  containerd://416848a58ddb8c2f0b6824145df4742596107bb75c7b67c13c12b621c2a50f6f
+    Image:         busybox
+    Image ID:      docker.io/library/busybox@sha256:a46257e06c82ad85242d0d38077d0a52d9896389ca60a1a59d3463db586e5fa4
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+      -c
+    Args:
+      while true; do echo $(date) >> /data/output.txt; sleep 5; done
+    State:          Running
+      Started:      Tue, 03 Nov 2026 06:35:06 +0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /data from shared-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-5v52q (ro)
+  multitool-reader:
+    Container ID:  containerd://733a0bf1a0b98fc2d04a1ea46ed422f6b5572032f3563e6c353eccea4d3b5f7a
+    Image:         wbitt/network-multitool
+    Image ID:      docker.io/wbitt/network-multitool@sha256:98d24ba5e94c74b153603dc4022aa15100ce33bccf7d0d59f8c2a3e088c90471
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+      -c
+    Args:
+      tail -f /data/output.txt
+    State:          Running
+      Started:      Tue, 03 Nov 2026 06:35:07 +0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /data from shared-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-5v52q (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  shared-data:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-5v52q:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
