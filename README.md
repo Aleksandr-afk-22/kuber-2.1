@@ -12,7 +12,7 @@
 
 ![task1](screenshots/task1.png)
 
-[kubectl describe pods data-exchange](kubectl describe pods data-exchange.txt)
+[kubectl_describe_pods_data-exchange](kubectl_describe_pods_data-exchange.txt)
 
 ## Задание 2. PV, PVC
 
