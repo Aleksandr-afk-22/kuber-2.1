@@ -47,3 +47,17 @@
 ![task2_6](screenshots/task2_6.png)
 
 Файл сохранился, потому что удаление PV — это удаление только объекта в etcd (API кластера). Директория hostPath — обычная папка на диске ноды, и политика Retain не предусматривает никакой очистки данных: всё остаётся до ручного вмешательства.
+
+## Задание 3. StorageClass
+
+Создать Deployment приложения, использующего PVC, созданный на основе StorageClass.
+
+**Решение**
+
+[sc](sc.yaml)
+
+![task3_1](screenshots/task3_1.png)
+
+![task3_2](screenshots/task3_2.png)
+
+![task3_3](screenshots/task3_3.png)
